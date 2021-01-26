@@ -35,6 +35,7 @@ public class Tests extends Configure {
                 throw new NoSuchElementException("The computer was created message isn't shown");
             } catch (NoSuchElementException e) {
                 System.out.println("The computer was not created");
+                Assert.assertEquals(true, false, "The computer was not created");
             }
         }
         driver.findElement(By.xpath(xPath.foundCompName)).sendKeys(xPath.compName);
@@ -45,6 +46,7 @@ public class Tests extends Configure {
             Assert.assertEquals(searchResults.contains(xPath.compName), true, "The computer is created");
         } catch (NoSuchElementException e) {
             System.out.println("The computer was not created");
+            Assert.assertEquals(true, false, "The computer was not created");
         }
     }
 }
