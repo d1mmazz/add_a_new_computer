@@ -19,11 +19,11 @@ public class Tests extends Configure {
     @Test
     public void computerAdd() throws InterruptedException {
         methods.openSite(driver, xPath.myUrl);
-        driver.findElement(By.id("add")).click();
+        driver.findElement(By.id(xPath.addComp)).click();
         methods.waitForElement(driver, xPath.name);
         driver.findElement(By.xpath(xPath.name)).sendKeys(xPath.compName);
-        driver.findElement(By.id("introduced")).sendKeys(date2.format(formatter));
-        driver.findElement(By.id("discontinued")).sendKeys(date.format(formatter));
+        driver.findElement(By.id(xPath.introducedDate)).sendKeys(date2.format(formatter));
+        driver.findElement(By.id(xPath.discontinuedDate)).sendKeys(date.format(formatter));
         driver.findElement(By.xpath(xPath.company)).click();
         driver.findElement(By.xpath(xPath.create)).click();
         methods.waitForElement(driver, xPath.successfulMessage);
@@ -32,7 +32,7 @@ public class Tests extends Configure {
             Assert.assertEquals(textMessage, xPath.rightTextMessage, "The computer was created message is shown");
         } else {
             try {
-                throw new NoSuchElementException("The computer was not created");
+                throw new NoSuchElementException("The computer was created message isn't shown");
             } catch (NoSuchElementException e) {
                 System.out.println("The computer was not created");
             }
